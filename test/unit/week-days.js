@@ -101,4 +101,27 @@ describe('Week day count', () => {
       });
     });
   });
+
+  describe('bug fix', () => {
+    it('has 3 week days between 2015-11-06 (Friday) and 2015-11-10 (Tuesday)', () => {
+      start = moment.utc('2015-11-06', DATE_FORMAT);
+      endMoment = moment.utc('2015-11-10', DATE_FORMAT);
+      weekDays = start.weekDays(endMoment);
+      expect(weekDays).to.equal(3);
+    });
+
+    it('has 7 week days between 2015-11-06 (Friday) and 2015-11-16 (Monday)', () => {
+      start = moment.utc('2015-11-06', DATE_FORMAT);
+      endMoment = moment.utc('2015-11-16', DATE_FORMAT);
+      weekDays = start.weekDays(endMoment);
+      expect(weekDays).to.equal(7);
+    });
+
+    it('has 4 week days between 2015-12-21 (Monday) and 2015-12-24 (Thursday)', () => {
+      start = moment.utc('2015-12-21', DATE_FORMAT);
+      endMoment = moment.utc('2015-12-24', DATE_FORMAT);
+      weekDays = start.weekDays(endMoment);
+      expect(weekDays).to.equal(4);
+    });
+  });
 });
